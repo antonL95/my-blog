@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="{% block lang %}{% if locale is defined %}{{ locale }}{% else %}en{% endif %}{% endblock %}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% if title is defined %}{{ title }}{% else %}Welcome!{% endif %}{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

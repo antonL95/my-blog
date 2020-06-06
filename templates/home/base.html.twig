@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129542538-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-129542538-1');
+    </script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/img/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('build/img/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/img/favicon-16x16.png') }}">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="webdesign, web developer, website, professional website, eshop">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Anton Loginov">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description"
+          content="Need a way to get your business of the ground or an online store to sell your amazing thing's don't hesitate to contact me.">
+    <meta name="og:title" property="og:title" content="Anton Loginov - web develope">
+    <meta name="og:description" property="og:description"
+          content="Need a way to get your business of the ground or an online store to sell your amazing thing's don't hesitate to contact me.">
+    <meta property="og:image" content="{{ asset('build/img/background_1.jpg') }}"/>
+    <meta name="google-site-verification" content="LW_g_gZWmcKDOjxbMOfyoePNU0QUE-cjgeHBqoOJE60"/>
+    <link rel="manifest" href="/manifest.json">
+    <title>{% block title %}Anton Loginov{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#home">
+                <img src="{{ asset('build/img/logo_white.svg') }}" height="40" alt="Anton Loginov logo"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <div class="container">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ref">References</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#con">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
+{% block body %}
+    <main>
+        <section class="section_whole_page header" id="home">
+            <div class="container d-flex flex-column text-center justify-content-center align-items-center header_content">
+                <img src="{{ asset('build/img/logo_black.svg') }}" alt="Logo">
+            </div>
+        </section>
+        {#<section class="section_whole_page" id="ref">
+            <div class="container">
+                <h2 class="h2">References</h2>
+                <section class="benefits d-flex flex-row flex-wrap align-items-center justify-content-around w-100 h-75">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-row flex-wrap cards">
+                        <div class="mdc-card__primary-action w-100 mdc-elevation--z3">
+                            <div class="mdc-card__media mdc-card__media--square mdc-card__media--16-9" id="oldschool">
+                            </div>
+                            <div class="card__primary p-3">
+                                <h3 class="demo-card__title mdc-typography--headline6">OldSchoolBarberShop.cz</h3>
+                                <p class="demo-card__title mdc-typography--body2">Business website for a local barber shop located in Prague.</p>
+                            </div>
+                            <!-- ... content ... -->
+                            <div class="mdc-card__actions p-3">
+                                <div class="mdc-card__action-buttons">
+                                    <a href="http://www.oldschoolbarbershop.cz/" target="_blank"
+                                       class="mdc-button mdc-button--unelevated mdc-card__action mdc-card__action--button">Show more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-row flex-wrap cards">
+                        <div class="mdc-card__primary-action w-100 mdc-elevation--z3">
+                            <div class="mdc-card__media mdc-card__media--square mdc-card__media--16-9" id="effectively">
+                            </div>
+                            <div class="card__primary p-3">
+                                <h3 class="demo-card__title mdc-typography--headline6">Effectively.cz</h3>
+                                <p class="demo-card__title mdc-typography--body2">There are 2 parts to this web app. One is front end which you can look at and
+                                    then if you log in you can see backend.</p>
+                            </div>
+                            <!-- ... content ... -->
+                            <div class="mdc-card__actions p-3">
+                                <div class="mdc-card__action-buttons">
+                                    <a href="http://www.effectively.cz/" target="_blank"
+                                       class="mdc-button mdc-button--unelevated mdc-card__action mdc-card__action--button">Show more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-4">
+                        <p class="mdc-typography--body2 text-center work_text">
+                            I also have been working for the last 4 years for a company as a full-stack developer you can find out more on my <a
+                                    href="https://www.linkedin.com/in/anton-loginov-934010109/" target="_blank"><i class="fab fa-2 fa-linkedin"></i></a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>#}
+        <section class="section_whole_page" id="con">
+            <div class="container">
+                <h2 class="h2">Contact</h2>
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 d-flex align-items-center flex-column m-auto">
+                    {% block contact_form %}
+                        {% include 'home/components/contact-from.html.twig' %}
+                        <div class="alert alert-success alert-dismissible fade show success mt-2" role="alert">
+                            Thank you for contacting me I'll get back to you as soon as I can!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade show error mt-2" role="alert">
+                            An error occurred, please send me an email on <a href="mailto:anton@antonloginov.com">anton@antonloginov.com</a>, Thank you!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+{% block footer %}
+    <footer class="footer d-flex flex-row flex-wrap align-items-center justify-content-around">
+        <div class="container">
+            <p class="page-copyright mb-0 text-center"><i class="far fa-copyright"></i> All rights reserved</p>
+        </div>
+    </footer>
+    <div class="alert alert-light alert-dismissible fade show error mt-2 cookies-consent" role="alert">
+        This site uses cookies. By continuing to visit this site you agree to our use of cookies.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        const contactFormUrl = '{{ path('home') }}';
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('{{ asset('/service-worker.js') }}');
+        }
+    </script>
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

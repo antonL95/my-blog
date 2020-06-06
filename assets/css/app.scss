@@ -1,0 +1,150 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.header {
+  background-image: url("/build/img/background_1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+
+  .header_content {
+    height: 100%;
+    color: $dark;
+  }
+}
+
+.section_whole_page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+  outline: none;
+
+  .h2 {
+    text-align: center;
+  }
+
+  .benefits {
+    padding-top: 3rem;
+
+    div.cover {
+      div {
+        margin-top: 2rem;
+
+        &:first-child {
+          width: 100px;
+          margin-right: 2rem;
+
+          i {
+            justify-self: center;
+          }
+        }
+
+        p {
+          margin: 0;
+          padding: 1rem 0 0;
+
+          &:first-child {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .work_text {
+    font-size: 1.3rem;
+    font-weight: bolder;
+  }
+}
+
+.fa-6 {
+  font-size: 6rem;
+}
+
+.fa-5 {
+  font-size: 5rem;
+}
+
+.fa-4 {
+  font-size: 4rem;
+}
+
+.fa-3 {
+  font-size: 3rem;
+}
+
+.fa-2 {
+  font-size: 2rem;
+}
+
+#con {
+  background: $dark;
+  color: $light;
+}
+
+#con {
+  .alert {
+    display: none;
+  }
+}
+
+#ref {
+  background-image: url("/build/img/background_2.jpg");
+  background-attachment: fixed;
+}
+
+.footer {
+  background: darken($dark, 20%);
+  color: $light;
+  min-height: 40px;
+
+  .page-copyright {
+    color: $gray-100;
+    font-size: 0.8rem;
+  }
+}
+
+.cookies-consent {
+  position: fixed;
+  bottom: 0;
+  opacity: 0.8;
+  display: none;
+  margin: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: breakpoint-max('sm')) {
+  .navbar {
+    .navbar-nav {
+      flex-direction: column;
+    }
+  }
+
+  .cover {
+    padding-top: 2rem;
+  }
+  #ref {
+    .benefits {
+      .cards {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

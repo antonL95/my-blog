@@ -1,0 +1,6 @@
+{% block contact_form %}
+    {{ form_start(our_form, {attr: {class: 'w-100'} }) }}
+    {{ form_widget(our_form) }}
+    <input type="submit" value="Send" class="btn btn-primary">
+    {{ form_end(our_form) }}
+{% endblock %}
