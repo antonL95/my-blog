@@ -5,7 +5,3 @@ controllers:
 kernel:
     resource: ../../src/Kernel.php
     type: annotation
-
-blog:
-    resource: ../../src/Blog/Controller/
-    type: annotation

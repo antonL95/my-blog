@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Blog\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ class BlogController extends AbstractController
     /**
      * @Route(
      *     "/",
-     *     name="_blog",
+     *     name="blog_index",
      *     host="blog.antonloginov.local",
      * )
      */
