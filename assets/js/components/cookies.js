@@ -29,7 +29,6 @@ export default class Cookies {
 
     checkCookie() {
         let consent = this.getCookie("consent");
-        console.log(consent);
         if (consent == "") {
             $('.cookies-consent').show();
         }

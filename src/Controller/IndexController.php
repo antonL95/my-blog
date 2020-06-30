@@ -45,7 +45,7 @@ class IndexController extends AbstractController
             return new JsonResponse(['error' => 1]);
         }
 
-        return $this->render('home/base.html.twig', [
+        return $this->render('home/index.html.twig', [
             'our_form' => $form->createView()
         ]);
     }

@@ -6,7 +6,29 @@ easy_admin:
     entities:
 #        # List the entity class name you want to manage
 #        - App\Entity\Product
-#        - App\Entity\Category
-        - App\Entity\User
+        Article:
+            class: App\Entity\Article
+            list:
+                fields:
+                    - id
+                    - { property: 'image', template: 'vich_uploader_image.html.twig' }
+                    - title
+                    - { property: 'date_add', format: 'd.m.Y'}
+                    - active
+            form:
+                fields:
+                    - title
+                    - { property: 'article_text', type: 'fos_ckeditor' }
+                    - { property: 'date_add',format: 'd.m.Y', type_options: { widget: 'single_text'} }
+                    - { property: 'imageFile', type: 'vich_image' }
+#        User:
+#            class: App\Entity\User
     design:
         brand_color: '#1ABC9C'
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+        assets:
+            js:
+                - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
+                - '/js/setup-ckfinder.js'
