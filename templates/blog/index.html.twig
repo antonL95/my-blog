@@ -4,22 +4,24 @@
     <main>
         <div class="container">
             {% for article in articles %}
-                <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
-                    <div class="flexbox-wrapper">
-                        <div class="article-thumbnail">
-                            <img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.title }}">
+                <a href="{{ path('article_page', {id:article.id}) }}">
+                    <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
+                        <div class="flexbox-wrapper">
+                            <div class="article-thumbnail">
+                                <img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('my_thumb') }}" alt="{{ article.title }}">
+                            </div>
+                            <div class="article-title">
+                                <h2>{{ article.title }}</h2>
+                            </div>
+                            <div class="article-description">
+                                <p>{{ article.articleText|raw }}</p>
+                            </div>
+                            <div class="article-date">
+                                <span>{{ article.dateAdd|date('d.m.Y') }}</span>
+                            </div>
                         </div>
-                        <div class="article-title">
-                            <h2>{{ article.title }}</h2>
-                        </div>
-                        <div class="article-description">
-                            <p>{{ article.articleText|raw }}</p>
-                        </div>
-                        <div class="article-date">
-                            <span>{{ article.dateAdd|date('d.m.Y') }}</span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                </a>
             {% endfor %}
         </div>
     </main>
