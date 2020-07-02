@@ -11,7 +11,7 @@ class UsersSecurityController extends AbstractController
 {
     /**
      * @Route(
-     *     "/login",
+     *     "/{_locale}/login",
      *     name="app_login",
      *     host="blog.antonloginov.local"
      * )
@@ -33,7 +33,8 @@ class UsersSecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="admin_logout")
+     * @Route("/{_locale}/logout", name="admin_logout",
+     *     host="blog.antonloginov.local")
      */
     public function logout(): void
     {
