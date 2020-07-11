@@ -1,0 +1,44 @@
+<nav class="navbar fixed-top">
+    <a class="showMenu">
+        <i class="fas fa-bars"></i>
+    </a>
+    <a class="navbar-brand" href="{{ path('home_localized') }}" onclick="scrollTop(e)">
+        <img src="{{ asset('build/img/logo_black.svg') }}"
+             alt="{% trans %}Logo{% endtrans %}">
+    </a>
+
+    <span>
+    <a href="https://www.linkedin.com/in/anton-loginov-934010109/" class="social" target="_blank" rel="noreferrer">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="#" class="social" tabindex="0" role="button" data-toggle="popover" data-container="body" data-trigger="focus" data-placement="bottom" data-html="true"
+       data-content="<a href='mailto:anton@antonloginov.com'>anton@antonloginov.com</a>" id="phone" onclick="return false;" rel="noreferrer">
+        <i class="fas fa-at"></i>
+    </a>
+    </span>
+</nav>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <div id="dismiss">
+            <i class="fas fa-times"></i>
+        </div>
+        <h3>
+            <a class="text-uppercase" href="{{ path('home_localized') }}">
+                <img src="{{ asset('build/img/logo_white.svg') }}"
+                     alt="{% trans %}Logo{% endtrans %}">
+            </a>
+        </h3>
+    </div>
+    {% if pages is defined %}
+        <div>
+            <div>
+                {% for page in pages %}
+                    <a class="nav-item nav-link" href="{{ page.path }}">{{ page.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</nav>
+<div class="overlay"></div>

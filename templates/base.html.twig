@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% block head %}
 <html lang="">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -25,43 +26,28 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Anton Loginov">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description"
-          content="">
-    <meta name="og:title" property="og:title" content="Anton Loginov - web developer">
-    <meta name="og:description" property="og:description"
-          content="">
-    <meta property="og:image" content="{{ asset('build/img/background_1.jpg') }}"/>
     <meta name="google-site-verification" content="LW_g_gZWmcKDOjxbMOfyoePNU0QUE-cjgeHBqoOJE60"/>
     <link rel="manifest" href="/manifest.json">
-    <title>{% block title %}Anton Loginov{% endblock %}</title>
+    {% block title %}
+        <meta name="og:title" property="og:title" content="{% if meta.title is defined %}{{ meta.title }}{% else %}Anton Loginov - web developer{% endif %}">
+        <title>
+           {% if meta.title is defined %}{{ meta.title }}{% else %}Anton Loginov - web developer{% endif %}
+        </title>
+        <meta property="og:image" content="{{ asset('build/img/blog_bg.jpg') }}"/>
+        <meta name="description"
+              content="{% if meta.description is defined %}{{ meta.description }}{% else %}I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let's get it going.{% endif %}">
+        <meta name="og:description" property="og:description"
+              content="{% if meta.description is defined %}{{ meta.description }}{% else %}I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let's get it going.{% endif %}">
+    {% endblock %}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
+{% endblock %}
 <body>
+{{ include('menu.html.twig') }}
 {% block header %}
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#home">
-                <img src="{{ asset('build/img/logo_white.svg') }}" height="40" alt="Anton Loginov logo"/>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainMenu">
-                <div class="container">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#ref">References</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#con">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </header>
 {% endblock %}
 {% block body %}

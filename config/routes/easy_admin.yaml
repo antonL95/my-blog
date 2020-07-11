@@ -1,5 +1,8 @@
-#easy_admin_bundle:
-##    resource: '@EasyAdminBundle/Controller/EasyAdminController.php'
-#    prefix: /{_locale}/al-admin445
-#    type: annotation
-#    host: blog.antonloginov.local
+easy_admin_bundle:
+    resource: '@EasyAdminBundle/Controller/EasyAdminController.php'
+    prefix: /al-admin445
+    type: annotation
+easy_admin_bundle_localized:
+    resource: '@EasyAdminBundle/Controller/EasyAdminController.php'
+    prefix: /{_locale}/al-admin445
+    type: annotation

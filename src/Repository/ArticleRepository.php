@@ -19,6 +19,16 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function getQueryAllActive()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.active = :val')
+            ->setParameter('val', 1)
+            ->orderBy('a.date_add', 'ASC')
+            ->getQuery()
+            ;
+    }
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

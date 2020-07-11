@@ -5,3 +5,14 @@ twig:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 fos_ck_editor:
     input_sync: true
+    configs:
+        my_config:
+            toolbar: standard
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+            extraPlugins: "wordcount"
+    plugins:
+        wordcount:
+            path:     "/bundles/fosckeditor/plugins/wordcount/wordcount/" # with trailing slash
+            filename: "plugin.js"
+#            extraPlugins: "wordcount"

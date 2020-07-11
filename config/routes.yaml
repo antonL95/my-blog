@@ -1,8 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-
-#dashboard:
-#  path:
-#  controller: App\Controller\Admin\DashboardController::index
-#  host: blog.antonloginov.local
+elfinder:
+  resource: "@FMElfinderBundle/Resources/config/routing.yaml"
+  prefix: /{_locale}/al-admin445/

@@ -29,6 +29,24 @@ $(document).ready(function () {
     let scrolling = new ScrollOnClick();
     scrolling.init();
 
+    $('.showMenu').click((e) => {
+        openMenu(e)
+    })
+    $('#dismiss, .nav-item, .overlay').click((e) => {
+        closeMenu(e)
+    })
+    $(document).keyup((e) => {
+        if (e.key === "Escape") {
+            if ($('.overlay').hasClass('active')) {
+                e.preventDefault();
+                $('#sidebar').hide(400)
+                $('.overlay').toggleClass('active');
+            }
+        }
+    });
+
+    $(".navbar-brand").hide();
+
     $('#con form').submit((e) => {
         e.preventDefault();
         let data = $(e.currentTarget).serialize();
@@ -67,3 +85,37 @@ $(document).ready(function () {
     })
 
 });
+
+
+$(document).scroll(function () {
+    let y = $(document).scrollTop(),
+        image = $(".navbar-brand")
+
+    if (y >= 400) {
+        //show the image and make the header fixed
+        image.show(400);
+        $('.navbar').css('background-color', '#fff')
+    } else {
+        //put the header in original position and hide image
+        image.hide(400);
+        $('.navbar').css('background-color', 'transparent')
+    }
+});
+
+function closeMenu(e) {
+    e.preventDefault();
+    $('#sidebar').hide(400)
+    $('.overlay').toggleClass('active');
+}
+
+function openMenu(e) {
+    e.preventDefault();
+    $('#sidebar').show(400)
+    $('.overlay').toggleClass('active');
+}
+
+function scrollTop(event) {
+    let scrolling = new ScrollOnClick();
+    let target = $('main');
+    scrolling.scrollTo(target, 0, 100, event);
+}

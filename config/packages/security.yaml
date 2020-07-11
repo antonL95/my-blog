@@ -47,4 +47,6 @@ security:
         - { path: .*/al-admin445, roles: [IS_AUTHENTICATED_FULLY, ROLE_ADMIN] }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/logout-page, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/efconnect, roles: [IS_AUTHENTICATED_FULLY, ROLE_ADMIN] }
+        - { path: ^/elfinder, roles: [IS_AUTHENTICATED_FULLY, ROLE_ADMIN] }
     # - { path: ^/profile, roles: ROLE_USER }

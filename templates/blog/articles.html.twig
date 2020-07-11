@@ -9,8 +9,8 @@
                 </div>
             </section>
             <div class="container">
-                {% for article in articles %}
-                    <a href="{{ path('article_page', {id:article.id}) }}">
+                {% for article in pagination %}
+                    <a href="{{ path('article_page_localized', {id:article.id}) }}">
                         <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
                             <div class="flexbox-wrapper">
                                 <div class="article-title">
@@ -25,9 +25,10 @@
                             </div>
                         </article>
                     </a>
-                {% else %}
-                    <h3>{% trans %}No articles found!{% endtrans %}</h3>
                 {% endfor %}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
             </div>
         </div>
     </main>

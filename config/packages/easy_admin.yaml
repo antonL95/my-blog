@@ -1,4 +1,5 @@
 easy_admin:
+    site_name: 'Anton Loginov Blog'
     user:
         display_name: true
         display_avatar: false
@@ -19,16 +20,19 @@ easy_admin:
                 fields:
                     - title
                     - { property: 'article_text', type: 'fos_ckeditor' }
-                    - { property: 'date_add',format: 'd.m.Y', type_options: { widget: 'single_text'} }
+                    - { property: 'date_add', format: 'd.m.Y', type_options: { widget: 'single_text'} }
                     - { property: 'imageFile', type: 'vich_image' }
+                    - { property: 'active', empty_data: 'true' }
 #        User:
 #            class: App\Entity\User
     design:
+        menu:
+            - { label: 'Editable', icon: 'fa fa-edit' }
+            - { label: 'Articles', entity: 'Article', icon: 'edit' }
+            - { label: 'Links' }
+            - { label: 'Blog Home', route: 'blog_index_localized', rel: 'index', icon: 'share' }
+            - { label: 'Home', route: 'home_localized', rel: 'index', icon: 'share' }
         brand_color: '#1ABC9C'
         form_theme:
             - '@EasyAdmin/form/bootstrap_4.html.twig'
             - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-        assets:
-            js:
-                - '/bundles/cksourceckfinder/ckfinder/ckfinder.js'
-                - '/js/setup-ckfinder.js'
