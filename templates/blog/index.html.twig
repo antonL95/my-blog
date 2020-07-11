@@ -17,7 +17,7 @@
                                     <h2>{{ article.title }}</h2>
                                 </div>
                                 <div class="article-description">
-                                    <p>{{ article.articleText|raw }}</p>
+                                    <p>{{ article.articleText|length > 150 ? article.articleText|striptags|slice(0,150)|raw|replace({'&nbsp;' : ''}) ~ '...' : article.articleText|striptags|raw|replace({'&nbsp;' : ''}) }}</p>
                                 </div>
                                 <div class="article-date">
                                     <span>{{ article.dateAdd|date('d.m.Y') }}</span>
