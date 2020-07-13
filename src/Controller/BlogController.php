@@ -14,6 +14,7 @@
     class BlogController extends AbstractController
     {
         const LIMIT = 10;
+
         /**
          * @Route("/{_locale}/blog/", name="blog_index_localized")
          * @Route("/blog/", name="blog_index")
@@ -25,13 +26,21 @@
          */
         public function index(Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
         {
-            $articles = $entityManager->getRepository(Article::class)->findBy(['active'=>1], ['date_add' => 'asc'], 10, 0);
+            $articles = $entityManager->getRepository(Article::class)->findBy(['active' => 1], ['date_add' => 'asc'], 10, 0);
+            $meta = [
+                'title' => 'Anton Loginov Blog - web developer',
+                'description' => 'I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating 
+                a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let\'s get it going.',
+                'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
+            ];
 
             return $this->render(
                 'blog/index.html.twig',
                 [
                     'articles' => $articles,
                     'controller_name' => 'BlogController',
+                    'meta' => $meta,
+                    'articlesCount' => $entityManager->getRepository(Article::class)->getCountAllActive(),
                 ]
             );
         }
@@ -50,11 +59,18 @@
         {
             $article = $entityManager->getRepository(Article::class)->findOneBy(['id' => $id]);
 
+            $meta = [
+                'title' => $article->getTitle() . ' - ' .'Anton Loginov Blog - web developer',
+                'description' => substr(str_replace('&nbsp;', ' ', strip_tags($article->getArticleText())), 0, 250),
+                'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
+            ];
+
             return $this->render(
                 'blog/article.html.twig',
                 [
                     'article' => $article,
                     'controller_name' => 'BlogController',
+                    'meta' => $meta
                 ]
             );
         }
@@ -75,15 +91,21 @@
             EntityManagerInterface $entityManager,
             PaginatorInterface $paginator
         ): Response {
-
             $articles = $entityManager->getRepository(Article::class)->getQueryAllActive();
             $pagination = $paginator->paginate($articles, $request->get('page', 1), self::LIMIT);
+            $meta = [
+                'title' => 'Anton Loginov Blog - web developer',
+                'description' => 'I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating 
+                a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let\'s get it going.',
+                'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
+            ];
 
             return $this->render(
                 'blog/articles.html.twig',
                 [
                     'pagination' => $pagination,
                     'controller_name' => 'BlogController',
+                    'meta' => $meta
                 ]
             );
         }

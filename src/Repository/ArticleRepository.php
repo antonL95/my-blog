@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -27,6 +29,24 @@ class ArticleRepository extends ServiceEntityRepository
             ->orderBy('a.date_add', 'ASC')
             ->getQuery()
             ;
+    }
+
+    /**
+     * @return bool|int|mixed|string
+     */
+    public function getCountAllActive()
+    {
+        try {
+            return $this->createQueryBuilder('a')
+                ->select('COUNT(a.id)')
+                ->andWhere('a.active = :val')
+                ->setParameter('val', 1)
+                ->orderBy('a.date_add', 'ASC')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (NoResultException|NonUniqueResultException $e) {
+            return false;
+        }
     }
 
     // /**

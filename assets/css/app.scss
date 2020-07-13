@@ -3,113 +3,17 @@
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&display=swap');
+@import "sidebar";
+@import "blog";
 
 html {
   scroll-behavior: smooth;
-}
-
-/**@SIDEBAR*/
-.navbar {
-  padding-right: 0 !important;
-  max-width: 100%;
-  background-color: transparent;
-
-  .social {
-    font-size: 1.5rem;
-    margin-right: 1.5rem;
-    outline: none;
-
-    &:hover {
-      text-decoration: none;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  .navbar-brand {
-    img {
-      max-width: 150px;
-      min-width: 100px;
-      max-height: 20px;
-    }
-  }
-  span {
-    padding-right: 2rem;
-  }
-  .showMenu {
-    font-size: 2rem;
-    cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  body {
+    font-family: 'Raleway', sans-serif;
   }
 }
-
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  /* top layer */
-  z-index: 9999;
-  background-color: #1b1e21;
-  display: none;
-
-  .sidebar-header {
-    position: relative;
-
-    img {
-      width: 100%;
-      max-height: 50px;
-      padding: 0 1rem;
-    }
-
-    #dismiss {
-      width: 100%;
-      height: 35px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-    }
-  }
-
-  .nav-item {
-    color: #fff !important;
-
-    &:hover {
-      text-decoration: underline;
-    }
-    &.social {
-      &:hover{
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  /* full screen */
-  width: 100vw;
-  height: 100vh;
-  /* transparent black */
-  background: rgba(0, 0, 0, 0.8);
-  /* middle layer, i.e. appears below the sidebar */
-  z-index: 998;
-  opacity: 0;
-  /* animate the transition */
-  transition: all 0.5s ease-in-out;
-
-  &.active {
-    display: block;
-    opacity: 1;
-  }
-}
-
-/**@END_SIDEBAR*/
 
 .header {
   background-image: url("/build/img/blog_bg.jpg");
@@ -120,23 +24,14 @@ html {
   height: 100vh;
 
   .header_content {
-    height: 100%;
     color: $dark;
+    margin: 0 auto;
   }
-}
-
-.header_blog {
-  background-image: url("/build/img/blog_bg.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 60vh;
-
-  .header_blog_content {
-    height: 100%;
-    color: white;
+  .sub-heading {
+    padding: 0 2rem;
+    margin: 0 auto;
     mix-blend-mode: difference;
+    color: white;
   }
 }
 

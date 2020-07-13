@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
-<meta name="og:title" property="og:title" content="{% if title is defined %}{{ article.title }}{% else %}Anton Loginov - web developer{% endif %}">
-<title>
-    {% if title is defined %}{{ article.title }}{% else %}Anton Loginov - web developer{% endif %}
-</title>
+{% block bg_image %}{{ vich_uploader_asset(article, 'imageFile') }}{% endblock %}
 {% block body %}
     <main>
         <div class="blog">
             <section class="header_blog" style="background-image: url('{{ vich_uploader_asset(article, 'imageFile') }}')!important;">
                 <div class="container d-flex flex-column text-center justify-content-center align-items-center header_blog_content">
-                    <h2>{{ article.title }}</h2>
+                    <h1>{{ article.title }}</h1>
+                    <h4>{% trans %}Posted on{% endtrans%} {{ article.dateAdd|date('d.m.Y') }} </h4>
                 </div>
             </section>
             <div class="container">
@@ -18,9 +16,6 @@
                         </div>
                         <div class="article-description">
                             <p>{{ article.articleText|raw }}</p>
-                        </div>
-                        <div class="article-date">
-                            <span>{{ article.dateAdd|date('d.m.Y') }}</span>
                         </div>
                     </div>
                 </article>

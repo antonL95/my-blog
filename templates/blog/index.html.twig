@@ -5,29 +5,44 @@
         <div class="blog">
             <section class="header_blog">
                 <div class="container d-flex flex-column text-center justify-content-center align-items-center header_blog_content">
-                    <h2>{% trans %}Anton Loginov Blog{% endtrans %}</h2>
+                    <h1>{% trans %}Blog{% endtrans %}</h1>
                 </div>
             </section>
-            <div class="container">
-                {% for article in articles %}
-                    <a href="{{ path('article_page', {id:article.id}) }}">
-                        <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
-                            <div class="flexbox-wrapper">
-                                <div class="article-title">
-                                    <h2>{{ article.title }}</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    {% for article in articles %}
+                        <section class="col-lg-3 col-xl-3 col-md-4 col-sm-6 col-12 p-4">
+                            <article id="{{ article.id }}" class="article-wrapper">
+                                <div class="flexbox-wrapper">
+                                    <div class="article-title">
+                                        <h2>{{ article.title }}</h2>
+                                    </div>
+                                    <div class="article-description">
+                                        <p>{{ article.articleText|length > 150 ? article.articleText|striptags|slice(0,150)|raw|replace({'&nbsp;' : ''}) ~ '...' : article.articleText|striptags|raw|replace({'&nbsp;' : ''}) }}</p>
+                                    </div>
+                                    <div class="article-date">
+                                        <span>{{ article.dateAdd|date('d.m.Y') }}</span>
+                                    </div>
+                                    <div class="article-link">
+                                        <a href="{{ path('article_page_localized', {id:article.id}) }}" class="btn btn-primary">
+                                            {% trans %} Read More {% endtrans %}
+                                        </a>
+                                    </div>
+
                                 </div>
-                                <div class="article-description">
-                                    <p>{{ article.articleText|length > 150 ? article.articleText|striptags|slice(0,150)|raw|replace({'&nbsp;' : ''}) ~ '...' : article.articleText|striptags|raw|replace({'&nbsp;' : ''}) }}</p>
-                                </div>
-                                <div class="article-date">
-                                    <span>{{ article.dateAdd|date('d.m.Y') }}</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                {% else %}
-                    <h3>{% trans %}No articles found!{% endtrans %}</h3>
-                {% endfor %}
+                            </article>
+                        </section>
+
+                    {% else %}
+                        <h3>{% trans %}No articles found!{% endtrans %}</h3>
+                    {% endfor %}
+                    {% if articlesCount > 10 %}
+                    <div class="w-100"></div>
+                    <div class="d-flex col-lg-3 col-xl-3 col-md-4 col-sm-6 col-12 p-4 m-auto">
+                        <a class="btn btn-primary m-auto d-inline-block align-self-center" href="{{ path('blog_articles_localized') }}">{% trans %} Show all articles {% endtrans %}</a>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </main>

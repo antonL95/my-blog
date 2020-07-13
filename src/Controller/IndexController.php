@@ -25,6 +25,19 @@
          */
         public function showIndex(Request $request, MailerInterface $mailer): Response
         {
+            $meta = [
+                'title' => 'Anton Loginov Blog - web developer',
+                'description' => 'I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating 
+                a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let\'s get it going.',
+                'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
+            ];
+            $works = [
+                [
+                    'title' => 'Artists Hero',
+                    'img' => '',
+                    'description' => substr('Vybavte svou kancelář unikátním uměním od lokálních umělců.', 0, 50)
+                ]
+            ];
             $form = $this->createForm(ContactType::class);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -49,7 +62,9 @@
             return $this->render(
                 'home/index.html.twig',
                 [
-                    'our_form' => $form->createView()
+                    'our_form' => $form->createView(),
+                    'meta' => $meta,
+                    'works' => $works,
                 ]
             );
         }

@@ -1,0 +1,14 @@
+.header_blog {
+  background-image: url("/build/img/blog_bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+
+  .header_blog_content {
+    height: 100%;
+    color: white;
+    mix-blend-mode: difference;
+  }
+}

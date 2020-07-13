@@ -28,12 +28,12 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="google-site-verification" content="LW_g_gZWmcKDOjxbMOfyoePNU0QUE-cjgeHBqoOJE60"/>
     <link rel="manifest" href="/manifest.json">
+    <meta property="og:image" content="{% if meta.hostname is defined %}{{ meta.hostname }}{% endif %}{% block bg_image %}{{ asset('build/img/blog_bg.jpg') }}{% endblock %}"/>
     {% block title %}
         <meta name="og:title" property="og:title" content="{% if meta.title is defined %}{{ meta.title }}{% else %}Anton Loginov - web developer{% endif %}">
         <title>
            {% if meta.title is defined %}{{ meta.title }}{% else %}Anton Loginov - web developer{% endif %}
         </title>
-        <meta property="og:image" content="{{ asset('build/img/blog_bg.jpg') }}"/>
         <meta name="description"
               content="{% if meta.description is defined %}{{ meta.description }}{% else %}I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let's get it going.{% endif %}">
         <meta name="og:description" property="og:description"

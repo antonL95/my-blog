@@ -5,29 +5,41 @@
         <div class="blog">
             <section class="header_blog">
                 <div class="container d-flex flex-column text-center justify-content-center align-items-center header_blog_content">
-                    <h2>{% trans %}Anton Loginov Blog{% endtrans %}</h2>
+                    <h2>{% trans %}Articles{% endtrans %}</h2>
                 </div>
             </section>
-            <div class="container">
-                {% for article in pagination %}
-                    <a href="{{ path('article_page_localized', {id:article.id}) }}">
-                        <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
-                            <div class="flexbox-wrapper">
-                                <div class="article-title">
-                                    <h2>{{ article.title }}</h2>
+            <div class="container-fluid">
+                <div class="row">
+                    {% for article in pagination %}
+                        <section class="col-lg-3 col-xl-3 col-md-4 col-sm-6 col-12 p-4">
+                            <article id="{{ article.id }}" class="article-wrapper">
+                                <div class="flexbox-wrapper">
+                                    <div class="article-title">
+                                        <h2>{{ article.title }}</h2>
+                                    </div>
+                                    <div class="article-description">
+                                        <p>{{ article.articleText|length > 150 ? article.articleText|striptags|slice(0,150)|raw|replace({'&nbsp;' : ''}) ~ '...' : article.articleText|striptags|raw|replace({'&nbsp;' : ''}) }}</p>
+                                    </div>
+                                    <div class="article-date">
+                                        <span>{% trans %} Published at: {% endtrans %} {{ article.dateAdd|date('d.m.Y') }}</span>
+                                    </div>
+                                    <div class="article-link">
+                                        <a href="{{ path('article_page', {id:article.id}) }}" class="btn btn-primary">
+                                            {% trans %} Read More {% endtrans %}
+                                        </a>
+                                    </div>
+
                                 </div>
-                                <div class="article-description">
-                                    <p>{{ article.articleText|length > 50 ? article.articleText|replace({'&nbsp;' : ''})|striptags|slice(0,50) ~ '...' : article.articleText|striptags|replace({'&nbsp;' : ''}) }}</p>
-                                </div>
-                                <div class="article-date">
-                                    <span>{{ article.dateAdd|date('d.m.Y') }}</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                {% endfor %}
-                <div class="navigation">
-                    {{ knp_pagination_render(pagination) }}
+                            </article>
+                        </section>
+
+                    {% else %}
+                        <h3>{% trans %}No articles found!{% endtrans %}</h3>
+                    {% endfor %}
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
                 </div>
             </div>
         </div>

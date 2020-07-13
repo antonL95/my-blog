@@ -2,63 +2,42 @@
 
 {% block body %}
     <main>
-        <section class="section_whole_page header" id="home">
-            <div class="container d-flex flex-column text-center justify-content-center align-items-center header_content">
-                <img src="{{ asset('build/img/logo_black.svg') }}" alt="Logo">
+        <section class="header container-fluid d-flex flex-wrap flex-row align-items-center justify-content-center" id="home">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-7 h-50 d-block header_content text-center">
+                <img src="{{ asset('build/img/logo_black.svg') }}" class="h-100" alt="Logo">
             </div>
+            <h4 class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6 mb-auto d-block sub-heading">
+                {% if meta.description is defined %} {{ meta.description }} {% endif %}
+            </h4>
         </section>
-        {#<section class="section_whole_page" id="ref">
-            <div class="container">
-                <h2 class="h2">References</h2>
+        <section class="section_whole_page" id="ref">
+            <div class="container-fluid">
+                <h2 class="h2">My work</h2>
                 <section class="benefits d-flex flex-row flex-wrap align-items-center justify-content-around w-100 h-75">
+                    {% for work in works %}
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-row flex-wrap cards">
-                        <div class="mdc-card__primary-action w-100 mdc-elevation--z3">
-                            <div class="mdc-card__media mdc-card__media--square mdc-card__media--16-9" id="oldschool">
-                            </div>
-                            <div class="card__primary p-3">
-                                <h3 class="demo-card__title mdc-typography--headline6">OldSchoolBarberShop.cz</h3>
-                                <p class="demo-card__title mdc-typography--body2">Business website for a local barber shop located in Prague.</p>
-                            </div>
-                            <!-- ... content ... -->
-                            <div class="mdc-card__actions p-3">
-                                <div class="mdc-card__action-buttons">
-                                    <a href="http://www.oldschoolbarbershop.cz/" target="_blank"
-                                       class="mdc-button mdc-button--unelevated mdc-card__action mdc-card__action--button">Show more</a>
-                                </div>
-                            </div>
+                        <div class="ref-image">
+
+                        </div>
+                        <div class="ref-title">
+
+                        </div>
+                        <div class="ref-description">
+
                         </div>
                     </div>
+                    {% else %}
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-row flex-wrap cards">
-                        <div class="mdc-card__primary-action w-100 mdc-elevation--z3">
-                            <div class="mdc-card__media mdc-card__media--square mdc-card__media--16-9" id="effectively">
-                            </div>
-                            <div class="card__primary p-3">
-                                <h3 class="demo-card__title mdc-typography--headline6">Effectively.cz</h3>
-                                <p class="demo-card__title mdc-typography--body2">There are 2 parts to this web app. One is front end which you can look at and
-                                    then if you log in you can see backend.</p>
-                            </div>
-                            <!-- ... content ... -->
-                            <div class="mdc-card__actions p-3">
-                                <div class="mdc-card__action-buttons">
-                                    <a href="http://www.effectively.cz/" target="_blank"
-                                       class="mdc-button mdc-button--unelevated mdc-card__action mdc-card__action--button">Show more</a>
-                                </div>
-                            </div>
-                        </div>
+                        No work done!
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-4">
-                        <p class="mdc-typography--body2 text-center work_text">
-                            I also have been working for the last 4 years for a company as a full-stack developer you can find out more on my <a
-                                    href="https://www.linkedin.com/in/anton-loginov-934010109/" target="_blank"><i class="fab fa-2 fa-linkedin"></i></a>
-                        </p>
-                    </div>
+                    {% endfor %}
                 </section>
             </div>
-        </section>#}
+        </section>
         <section class="section_whole_page" id="con">
-            <div class="container">
+            <div class="container-fluid">
                 <h2 class="h2">Contact</h2>
-                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 d-flex align-items-center flex-column m-auto">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex align-items-center flex-column m-auto">
                     {% block contact_form %}
                         {% include 'home/components/contact-from.html.twig' %}
                         <div class="alert alert-success alert-dismissible fade show success mt-2" role="alert">
