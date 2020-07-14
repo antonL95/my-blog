@@ -23,6 +23,7 @@ easy_admin:
                     - { property: 'date_add', format: 'd.m.Y', type_options: { widget: 'single_text'} }
                     - { property: 'imageFile', type: 'vich_image' }
                     - { property: 'active', empty_data: 'true' }
+                    - timeToRead
 #        User:
 #            class: App\Entity\User
     design:

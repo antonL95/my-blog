@@ -12,6 +12,7 @@
     use Symfony\Component\Mime\Email;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Component\Mime\Address;
+    use Symfony\Contracts\Translation\TranslatorInterface;
 
     class IndexController extends AbstractController
     {
@@ -23,20 +24,25 @@
          *
          * @return Response
          */
-        public function showIndex(Request $request, MailerInterface $mailer): Response
+        public function showIndex(Request $request, MailerInterface $mailer, TranslatorInterface $translator): Response
         {
             $meta = [
-                'title' => 'Anton Loginov Blog - web developer',
+                'title' => 'Anton Loginov - web developer',
                 'description' => 'I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating 
                 a beautiful, fast and most importantly reliable web application specifically designed for your business idea. Write me a message and let\'s get it going.',
                 'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
             ];
             $works = [
                 [
-                    'title' => 'Artists Hero',
-                    'img' => '',
-                    'description' => substr('Vybavte svou kancelář unikátním uměním od lokálních umělců.', 0, 50)
-                ]
+                    'title' => 'Artist\'s Hero',
+                    'img' => 'artistshero.png',
+                    'description' => substr($translator->trans('Unique art for unique businesses.', [], 'messages'), 0, 50)
+                ],
+                [
+                    'title' => 'Effectively.cz',
+                    'img' => 'effectively.png',
+                    'description' => substr($translator->trans('Productivity analysis app.', [], 'messages'), 0, 50)
+                ],
             ];
             $form = $this->createForm(ContactType::class);
             $form->handleRequest($request);

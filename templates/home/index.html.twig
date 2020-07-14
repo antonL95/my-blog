@@ -17,13 +17,13 @@
                     {% for work in works %}
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-row flex-wrap cards">
                         <div class="ref-image">
-
+                            <img src="{{ asset('build/img/'~work.img) }}" alt="{{ work.title }}">
                         </div>
-                        <div class="ref-title">
-
+                        <div class="ref-title mt-2">
+                            <h3>{{ work.title }}</h3>
                         </div>
-                        <div class="ref-description">
-
+                        <div class="ref-description mt-2">
+                            <article>{{ work.description }}</article>
                         </div>
                     </div>
                     {% else %}

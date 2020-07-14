@@ -58,6 +58,11 @@ class Article
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $timeToRead;
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -138,6 +143,18 @@ class Article
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getTimeToRead(): ?int
+    {
+        return $this->timeToRead;
+    }
+
+    public function setTimeToRead(?int $timeToRead): self
+    {
+        $this->timeToRead = $timeToRead;
 
         return $this;
     }

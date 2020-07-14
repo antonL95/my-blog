@@ -6,7 +6,8 @@
             <section class="header_blog" style="background-image: url('{{ vich_uploader_asset(article, 'imageFile') }}')!important;">
                 <div class="container d-flex flex-column text-center justify-content-center align-items-center header_blog_content">
                     <h1>{{ article.title }}</h1>
-                    <h4>{% trans %}Posted on{% endtrans%} {{ article.dateAdd|date('d.m.Y') }} </h4>
+                    <h4>{% trans with {'%date%':  article.dateAdd|date('d.m.Y') } %}Posted on %date%{% endtrans%}</h4>
+                    <h4>{% trans with {'%mins%':  article.timeToRead } %}%mins% minutes{% endtrans%}</h4>
                 </div>
             </section>
             <div class="container">

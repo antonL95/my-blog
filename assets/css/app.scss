@@ -62,6 +62,26 @@ html {
 #ref {
   background-image: url("/build/img/background_2.jpg");
   background-attachment: fixed;
+  h2{
+    mix-blend-mode: difference;
+    color: white;
+  }
+
+  .cards{
+    .ref-image {
+      width: 55%;
+      margin: auto;
+      img {
+        width: 100%;
+      }
+    }
+    .ref-title, .ref-description {
+      mix-blend-mode: difference;
+      color: white;
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
 .footer {
