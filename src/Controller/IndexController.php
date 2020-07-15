@@ -26,6 +26,11 @@
          */
         public function showIndex(Request $request, MailerInterface $mailer, TranslatorInterface $translator): Response
         {
+            $pages = [
+                    ['path' => $this->generateUrl('home_localized').'#ref', 'title' => $translator->trans('References')],
+                    ['path' => $this->generateUrl('home_localized').'#con', 'title' => $translator->trans('Contact')],
+                    ['path' => $this->generateUrl('blog_index_localized'), 'title' => $translator->trans('Blog')],
+            ];
             $meta = [
                 'title' => 'Anton Loginov - web developer',
                 'description' => 'I believe that everyone deserves a chance to start their own business and I want to help you to achieve that goal by creating 
@@ -71,6 +76,7 @@
                     'our_form' => $form->createView(),
                     'meta' => $meta,
                     'works' => $works,
+                    'pages' => $pages,
                 ]
             );
         }

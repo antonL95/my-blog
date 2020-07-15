@@ -103,7 +103,6 @@ $(document).scroll(function () {
 });
 
 function closeMenu(e) {
-    e.preventDefault();
     $('#sidebar').hide(400)
     $('.overlay').toggleClass('active');
 }

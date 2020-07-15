@@ -26,6 +26,11 @@
          */
         public function index(Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
         {
+            $pages = [
+                ['path' => $this->generateUrl('home_localized').'#ref', 'title' => $translator->trans('References')],
+                ['path' => $this->generateUrl('home_localized').'#con', 'title' => $translator->trans('Contact')],
+                ['path' => $this->generateUrl('blog_index_localized'), 'title' => $translator->trans('Blog')],
+            ];
             $articles = $entityManager->getRepository(Article::class)->findBy(['active' => 1], ['date_add' => 'asc'], 10, 0);
             $meta = [
                 'title' => 'Anton Loginov Blog - web developer',
@@ -41,6 +46,7 @@
                     'controller_name' => 'BlogController',
                     'meta' => $meta,
                     'articlesCount' => $entityManager->getRepository(Article::class)->getCountAllActive(),
+                    'pages' => $pages,
                 ]
             );
         }
@@ -57,6 +63,11 @@
          */
         public function articleAction(int $id, Request $request, TranslatorInterface $translator, EntityManagerInterface $entityManager): Response
         {
+            $pages = [
+                ['path' => $this->generateUrl('home_localized').'#ref', 'title' => $translator->trans('References')],
+                ['path' => $this->generateUrl('home_localized').'#con', 'title' => $translator->trans('Contact')],
+                ['path' => $this->generateUrl('blog_index_localized'), 'title' => $translator->trans('Blog')],
+            ];
             $article = $entityManager->getRepository(Article::class)->findOneBy(['id' => $id]);
 
             $meta = [
@@ -70,7 +81,8 @@
                 [
                     'article' => $article,
                     'controller_name' => 'BlogController',
-                    'meta' => $meta
+                    'meta' => $meta,
+                    'pages' => $pages,
                 ]
             );
         }
@@ -91,6 +103,11 @@
             EntityManagerInterface $entityManager,
             PaginatorInterface $paginator
         ): Response {
+            $pages = [
+                ['path' => $this->generateUrl('home_localized').'#ref', 'title' => $translator->trans('References')],
+                ['path' => $this->generateUrl('home_localized').'#con', 'title' => $translator->trans('Contact')],
+                ['path' => $this->generateUrl('blog_index_localized'), 'title' => $translator->trans('Blog')],
+            ];
             $articles = $entityManager->getRepository(Article::class)->getQueryAllActive();
             $pagination = $paginator->paginate($articles, $request->get('page', 1), self::LIMIT);
             $meta = [
@@ -105,7 +122,8 @@
                 [
                     'pagination' => $pagination,
                     'controller_name' => 'BlogController',
-                    'meta' => $meta
+                    'meta' => $meta,
+                    'pages' => $pages,
                 ]
             );
         }
