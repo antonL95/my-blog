@@ -1,23 +1,39 @@
 {% extends 'base.html.twig' %}
-{% block bg_image %}{{ vich_uploader_asset(article, 'imageFile') }}{% endblock %}
+{% block bg_image %}
+    {% if article is defined and article is not null %}
+        {{ vich_uploader_asset(article, 'imageFile') }}
+    {% endif %}
+{% endblock %}
 {% block body %}
     <main>
         <div class="blog">
-            <section class="header_blog" style="background-image: url('{{ vich_uploader_asset(article, 'imageFile') }}')!important;">
+            <section class="header_blog"
+                    {% if article is defined and article is not null %}
+                        style="background-image: url('{{ vich_uploader_asset(article, 'imageFile') }}')!important;"
+                    {% endif %}
+            >
                 <div class="container d-flex flex-column text-center justify-content-center align-items-center header_blog_content">
-                    <h1>{{ article.title }}</h1>
-                    <h4>{% trans with {'%date%':  article.dateAdd|date('d.m.Y') } %}Posted on %date%{% endtrans%}</h4>
-                    <h4>{% trans with {'%mins%':  article.timeToRead } %}%mins% minutes{% endtrans%}</h4>
+
+                    {% if article is defined and article is not null %}
+                        <h1>{{ article.title }}</h1>
+                        <h4>{% trans with {'%date%':  article.dateAdd|date('d.m.Y') } %}Posted on %date%{% endtrans %}</h4>
+                        <h4>{% trans with {'%mins%':  article.timeToRead } %}%mins% minutes{% endtrans %}</h4>
+                    {% else %}
+                        <h1>{% trans %} 404 Article Not Found! {% endtrans %}</h1>
+                    {% endif %}
                 </div>
             </section>
             <div class="container">
-                <article id="{{ article.id }}" class="col-9 m-auto article-wrapper">
-                    <div class="flexbox-wrapper">
-                        <div class="article-title">
-                        </div>
-                        <div class="article-description">
-                            <p>{{ article.articleText|raw }}</p>
-                        </div>
+                <article id="{% if article is defined and article is not null %}{{ article.id }}{% endif %}" class="col-9 m-auto article-wrapper">
+                    <div class="flexbox-wrapper d-flex flex-row">
+                        {% if article is defined and article is not null %}
+                            <div class="article-description">
+                                <p>{{ article.articleText|raw }}</p>
+                            </div>
+                        {% else %}
+                            <a class="btn btn-primary m-auto d-inline-block align-self-center"
+                               href="{{ path('blog_articles_localized') }}">{% trans %} Try it here. {% endtrans %}</a>
+                        {% endif %}
                     </div>
                 </article>
             </div>

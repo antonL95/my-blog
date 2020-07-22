@@ -68,13 +68,16 @@
                 ['path' => $this->generateUrl('home_localized').'#con', 'title' => $translator->trans('Contact')],
                 ['path' => $this->generateUrl('blog_index_localized'), 'title' => $translator->trans('Blog')],
             ];
-            $article = $entityManager->getRepository(Article::class)->findOneBy(['id' => $id]);
+            $article = $entityManager->getRepository(Article::class)->findOneBy(['id' => $id, 'active' => 1]);
 
-            $meta = [
-                'title' => $article->getTitle() . ' - ' .'Anton Loginov Blog - web developer',
-                'description' => substr(str_replace('&nbsp;', ' ', strip_tags($article->getArticleText())), 0, 250),
-                'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
-            ];
+            $meta = [];
+            if(isset($article) && $article !== null) {
+                $meta = [
+                    'title' => $article->getTitle() . ' - ' .'Anton Loginov Blog - web developer',
+                    'description' => substr(str_replace('&nbsp;', ' ', strip_tags($article->getArticleText())), 0, 250),
+                    'hostname' => $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'],
+                ];
+            }
 
             return $this->render(
                 'blog/article.html.twig',
